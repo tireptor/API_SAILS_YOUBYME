@@ -16,7 +16,7 @@
  * The same command-line arguments and env vars are supported, e.g.:
  * `NODE_ENV=production node app.js --port=80 --verbose`
  *
- * For more information see:
+ * For more information see:t
  *   https://sailsjs.com/anatomy/app.js
  */
 
