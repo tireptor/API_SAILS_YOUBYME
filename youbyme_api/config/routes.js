@@ -21,6 +21,9 @@ module.exports.routes = {
 
   '/': { view: 'pages/homepage' },
 'get /user/test': 'UserController.login',
+'get /user/create': 'UserController.addUser',
+
+
 'get /categorie': 'CategorieController.getAllCategories',
 
   /***************************************************************************

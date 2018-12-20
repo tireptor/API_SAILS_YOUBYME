@@ -26,7 +26,8 @@ module.exports = {
     },
     chemin_badge: {
       type:'string',
-      columnName:'chemin_badge'
+      columnName:'chemin_badge', 
+	  allowNull: true,
     },
   },
 

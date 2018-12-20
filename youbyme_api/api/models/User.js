@@ -16,7 +16,7 @@ module.exports = {
       columnName:'id_t_personne'
     },
     groupe: {
-      type:'string',
+      type:'number',
       columnName:'id_t_groupe'
     },
     nom: {
