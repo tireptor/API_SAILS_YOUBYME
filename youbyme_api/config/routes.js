@@ -20,7 +20,8 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': { view: 'pages/homepage' },
-'get /user/test': 'UserController.login',
+  'get /user/test': 'UserController.login', // sans passage de paramètre dans l'url
+  'get /vote/:id': 'VoteController.login', //:id passage de paramètre dans l'URL
 
   /***************************************************************************
   *                                                                          *
