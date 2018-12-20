@@ -13,7 +13,13 @@ module.exports = {
             select:['prenom', 'nom'],
         })
         return res.send(user);
+    },
+    login1: async function(req, res){
+        var user = await User.find({
+            where: {nom:'Leboucq'},
+            select:['nom'],
+        })
+        return res.send(user);
     }
 
 };
-

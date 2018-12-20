@@ -7,7 +7,7 @@
 
 module.exports = {
 
-  login: async function(req, res){
+  tracaVoteWhereIdPeriode: async function(req, res){
       var vote = await Vote.find({
           where: {periode:req.param('id')},
           select:['id','periode', 'personne_votante','personne_recevante','soft','date'],

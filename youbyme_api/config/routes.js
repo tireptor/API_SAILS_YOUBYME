@@ -21,7 +21,9 @@ module.exports.routes = {
 
   '/': { view: 'pages/homepage' },
   'get /user/test': 'UserController.login', // sans passage de paramètre dans l'url
-  'get /vote/:id': 'VoteController.login', //:id passage de paramètre dans l'URL
+  'get /user/test1': 'UserController.login1',
+  'get /vote/:id': 'VoteController.tracaVoteWhereIdPeriode', //:id passage de paramètre dans l'URL
+  'get /session/vote/:id': 'SessionVoteController.allSessionVoteWhereIdPilote',//id d'un pilote en paramètre
 
   /***************************************************************************
   *                                                                          *
