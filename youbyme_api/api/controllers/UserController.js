@@ -6,7 +6,14 @@
  */
 
 module.exports = {
-  
+
+    login: async function(req, res){
+        var user = await User.find({
+            where: {nom:'Leboucq'},
+            select:['prenom', 'nom'],
+        })
+        return res.send(user);
+    }
 
 };
 
