@@ -34,6 +34,9 @@ module.exports.datastores = {
 
   default: {
 
+    adapter: 'sails-postgresql',
+    url: 'postgresql://postgres:root@localhost:5432/YouByMe',
+
     /***************************************************************************
     *                                                                          *
     * Want to use a different database during development?                     *
