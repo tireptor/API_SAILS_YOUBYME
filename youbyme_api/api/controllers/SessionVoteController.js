@@ -10,7 +10,7 @@ module.exports = {
   allSessionVoteWhereIdPilote: async function(req, res){
     var userId = req.param('id');
     if (userId != 1) {
-     return res.badRequest(new Error('No user ID specified!'));   // message d'erreur
+     return res.badRequest('No user ID specified!');   // message d'erreur
    }
       var sessionVote = await SessionVote.find({
           where: {idPilote:req.param('id')},
