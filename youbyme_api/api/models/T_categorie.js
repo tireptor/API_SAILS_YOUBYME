@@ -6,31 +6,28 @@
  */
 
 module.exports = {
-  tableName: 't_personne',
+  tableName: 't_categorie',
   attributes: {
     updatedAt: false,
     createdAt: false,
     id: {
       type:'number',
       autoIncrement: true,
-      columnName:'id_t_personne'
+      columnName:'id_t_categorie'
     },
-    groupe: {
-      type:'number',
-      columnName:'id_t_groupe'
-    },
-    nom: {
+    nom_categorie: {
       type:'string',
-      columnName:'nom_t_personne'
+      columnName:'nom_t_categorie'
     },
-    prenom: {
+    nom_badge: {
       type:'string',
-      columnName:'prenom_t_personne'
+      columnName:'nom_badge',
+	  unique: true,
     },
-    email: {
+    chemin_badge: {
       type:'string',
-      columnName:'email_t_personne',
-      unique: true,
+      columnName:'chemin_badge', 
+	  allowNull: true,
     },
   },
 
