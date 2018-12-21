@@ -14,5 +14,9 @@ module.exports = {
         })
         return res.send(user);
     },
-
-};
+	
+	addUser: async function(req, res){
+        var userCreated = await User.create({ groupe: 1, nom: 'yolo2', prenom: 'swag2' }).fetch();
+		sails.log('yolo2\'s id is:', userCreated.id);
+	},
+}
