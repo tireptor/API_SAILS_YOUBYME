@@ -32,6 +32,10 @@ module.exports = {
       columnName:'email_t_personne',
       unique: true,
     },
+    promos:{
+      collection:'promo',
+      via:'user',
+      through:'userpromo',
+    },
   },
-
 };

@@ -8,10 +8,7 @@
 module.exports = {
 
     login: async function(req, res){
-        var user = await User.find({
-            where: {nom:'Leboucq'},
-            select:['prenom', 'nom'],
-        })
+        var user = await User.find({nom:'Leboucq'});
         return res.send(user);
     },
 	
