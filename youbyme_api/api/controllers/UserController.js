@@ -13,7 +13,6 @@ module.exports = {
             select:['prenom', 'nom'],
         })
         return res.send(user);
-    }
+    },
 
 };
-
