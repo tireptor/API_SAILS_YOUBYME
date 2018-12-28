@@ -9,7 +9,7 @@ module.exports = {
 
     getAllCategories: async function(req, res){
         var toutes_categories = await T_categorie.find({
-            select:['nom_badge', 'chemin_badge'],
+            select:['nom_badge', 'chemin_badge', 'nom_categorie'],
         })
         return res.send(toutes_categories);
     }

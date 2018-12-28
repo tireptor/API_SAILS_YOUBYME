@@ -9,12 +9,14 @@ module.exports = {
   tableName:'t_assoc_promo_personne',
   attributes: {
 
+    updatedAt: false,
+    createdAt: false,
+
     user:{
       columnName:'id_t_personne',
       model:'user',
     },
-    createdAt:false,
-    updatedAt:false,
+
     promo:{
       columnName:'code_analytique',
       model:'promo',

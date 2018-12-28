@@ -13,7 +13,29 @@ module.exports = {
     },
 	
 	addUser: async function(req, res){
-        var userCreated = await User.create({ groupe: 1, nom: 'yolo2', prenom: 'swag2' }).fetch();
-		sails.log('yolo2\'s id is:', userCreated.id);
+        var userCreated = await User.create({ groupe: 1, nom: 'yolo6', prenom: 'swag6', email: 'yolo6swag6@gmail.com' }).fetch();
+        var tmpLog =  'yolo6\'s id is:' + userCreated.id;   // retourne un log dans le navigateur
+        sails.log('yolo6\'s id is:', userCreated.id);       // retourne un log dans la console
+        
+        return res.send(tmpLog);
+    },
+    
+    addUserWithParameters: async function(req, res){
+        var parameterNom = req.param('nom');
+        var parameterPrenom = req.param('prenom');
+        var parameterEmail = req.param('email');
+        var parameterGroupe = req.param('groupe');
+        var parameterPassword = req.param('password')
+
+        if (parameterPassword == null )
+        {
+            parameterPassword = '1234';
+        }
+
+        var userCreated = await User.create({ groupe: parameterGroupe, nom: parameterNom, prenom: parameterPrenom, email: parameterEmail, password: parameterPassword }).fetch();
+        var tmpLog =  parameterNom + 'id is:' + userCreated.id;   // retourne un log dans le navigateur
+        sails.log(parameterNom + ' id is:', userCreated.id);       // retourne un log dans la console
+        
+        return res.send(tmpLog);
 	},
 }

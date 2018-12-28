@@ -1,36 +1,33 @@
 /**
- * Promo.js
+ * Groupe.js
  *
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
 
 module.exports = {
-tableName:'t_promotion',
+  tableName:'t_groupe',
   attributes: {
+
     updatedAt: false,
     createdAt: false,
     id:{
-      columnName:'code_analytique',
-      type:'string',
+      columnName:'id_t_groupe',
+      type:'number',
       required:true,
       unique:true,
     },
 
-    nbvote:{
-      columnName:'nombre_vote',
-      type:'number',
-    },
     nom:{
-      columnName:'nom_t_promotion',
+      columnName:'nom_t_groupe',
       type:'string',
     },
+    // référence  à user:
     users:{
       collection:'user',
-      via: 'promo',
-      through:'userpromo', // what ?
+      //type:'number',
+      via:'groupe',
     },
-
   },
 
 };

@@ -16,8 +16,8 @@ module.exports = {
       columnName:'id_t_personne'
     },
     groupe: {
-      type:'number',
-      columnName:'id_t_groupe'
+      columnName:'id_t_groupe',
+      model:'groupe'
     },
     nom: {
       type:'string',
@@ -27,10 +27,15 @@ module.exports = {
       type:'string',
       columnName:'prenom_t_personne'
     },
+    password: {
+      type:'string',
+      columnName:'password_t_personne'
+    },
     email: {
       type:'string',
       columnName:'email_t_personne',
       unique: true,
+      required: true,
     },
     promos:{
       collection:'promo',
