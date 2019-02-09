@@ -19,6 +19,14 @@ module.exports = {
       columnName:'id_t_groupe',
       model:'groupe'
     },
+    votants: {
+      collection:'vote',
+      via:'personne_votante',
+    },
+    recevants: {
+      collection:'vote',
+      via:'personne_recevante',
+    },
     nom: {
       type:'string',
       columnName:'nom_t_personne'

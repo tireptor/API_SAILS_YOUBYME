@@ -44,15 +44,15 @@ module.exports = {
       columnName:'id_periode'
     },
     personne_votante: {
-      type:'number',
+      model:'user',
       columnName:'id_personne_votante'
     },
     personne_recevante: {
-      type:'number',
+      model:'user',
       columnName:'id_personne_recevante'
     },
-    soft: {
-      type:'number',
+    softskill: {
+      model:'softskill',
       columnName:'id_t_soft_skill'
     },
     date: {

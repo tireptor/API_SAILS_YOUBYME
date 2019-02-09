@@ -17,6 +17,6 @@ module.exports = {
           select:['id','codeAnalytique', 'idPilote','dateDebut','dateFin'],
       })
       return res.send(sessionVote);
-  }
+  },
 
 };
