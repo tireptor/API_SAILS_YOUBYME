@@ -60,5 +60,12 @@ module.exports = {
       columnType: 'date',
       columnName:'date_vote'
     },
+
+    personne_recevante:{
+      model:'user',
+      columnName: 'id_personne_recevante',
+    },
+
+
   },
 };

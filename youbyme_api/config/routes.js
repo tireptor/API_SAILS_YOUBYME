@@ -41,6 +41,7 @@ module.exports.routes = {
   'post /validation/addValidationSoftSkill': 'ValidationController.addValidationSoftSkill',          // 
   'get /promo/getAllPilotInPromo/:idPromo' : 'PromoController.getAllPilotInPromo'
   //get /user/createWithParameters/:nom:prenom?': 'UserController.addUserWithParameters' Paramètre optionnel
+  '/import': 'ImportController.ImportCSV',
   /***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *

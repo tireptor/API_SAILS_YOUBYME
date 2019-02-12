@@ -45,11 +45,22 @@ module.exports = {
       unique: true,
       required: true,
     },
+    password:{
+      type:'string',
+      columnName:'password_t_personne',
+    },
+
+
     promos:{
       collection:'promo',
       via:'user',
       through:'userpromo',
     },
+
+    votes:{
+      collection:'vote',
+      via:'personne_recevante',
+    }
   },
   customToJSON: function() {
      //Retourne une copie du résultat sans le mot de passe
