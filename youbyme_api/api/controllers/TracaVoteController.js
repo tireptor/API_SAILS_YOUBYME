@@ -17,6 +17,26 @@ module.exports = {
         
         return res.send(tmpLog);
     },
+	
+	TopThreeSkillByIdUser: async function(req, res){
+		
+		var idUser = req.param('idUser');
+		var topNumber = req.param('numberTop');
+				
+				
+        var getVoteSoftSkill = await sails.sendNativeQuery(
+									'SELECT id_t_soft_skill, count(*) ' + 
+									'FROM t_tracabilite_vote ' +
+									'WHERE id_personne_recevante = '+ idUser + ' ' +
+									'GROUP BY id_t_soft_skill ' +
+									'ORDER BY count(*) DESC ' +
+									'LIMIT ' + topNumber);
+									
+        //var tmpLog = getVoteSoftSkill   // retourne un log dans le navigateur
+        sails.log(getVoteSoftSkill);     // retourne un log dans la console
+        
+        return res.ok(getVoteSoftSkill.rows);
+    },
 
 };
 
