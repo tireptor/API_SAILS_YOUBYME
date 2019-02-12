@@ -48,18 +48,27 @@ module.exports.policies = {
     destroy : 'isAdmin',
   },
   SoftskillController:{
+    create : 'isAdmin',
     update : 'isLoggedIn',
     destroy : 'isAdmin',
   },
   TracaVoteController:{
+    create : 'isLoggedIn',
     update : 'isLoggedIn',
     destroy : 'isAdmin',
   },
   UserController:{
+    create : 'isAdmin',
     update : 'isLoggedIn',
     destroy : 'isAdmin',
   },
   VoteController:{
+    create : 'isLoggedIn',
+    update : 'isLoggedIn',
+    destroy : 'isAdmin',
+  },
+  ValidationController:{
+    create : 'isLoggedIn',
     update : 'isLoggedIn',
     destroy : 'isAdmin',
   }

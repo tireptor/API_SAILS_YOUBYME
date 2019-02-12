@@ -22,6 +22,23 @@ module.exports = {
             select:['nom'],
         }).populate('users');
         return res.send(promo);
+    },
+    /*
+    getAllPilotInPromo: async function(req, res)
+    {
+        var promo = await Promo.find({
+            where: {id:req.param('id'),groupe:'2'},
+            select: ['nom'],
+        }).populate('users');
+        return res.send(promo);
     }
+    */
+   getAllPilotInPromo: async function(req, res)
+   {
+       var promo = await Promo.find({}).populate('users',{
+           where: {groupe:'2'},
+       });
+       return res.send(promo);
+   }
 };
 
