@@ -6,30 +6,7 @@
  */
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
-module.exports = {
-    /*
-    login: async function(req, res) {
-
-        var mesgAuthError   = "Email ou mot de passe erroné !";
-        var mesgAutSuccess  = "Connexion réussie !";
-        // Authentication code here
-        var user = await User.find({
-            where: {email:req.param('email'),password:req.param('password')},
-            select:['id'],
-        })
-        // Si on a un select vide alors cela veut dire que l'utilisateur n'a pas saisie correctement ses informations d'authentification
-        if (user == '')
-        {
-            return res.send(mesgAuthError);
-        }
-        // If successfully authenticated
-        req.session.userId = user[0].id; 
-        mesgAutSuccess = mesgAutSuccess + " Id de connexion : " + user[0].id;
-        return res.json(mesgAutSuccess);
-    
-      },
-      */
-      
+module.exports = {     
 
      login: function(req, res) {
         if (!req.param('email') || !req.param('password')) {
@@ -82,7 +59,7 @@ module.exports = {
         return res.send(tmpLog);
     },
     
-    addUserWithParameters: async function(req, res){
+    addUser: async function(req, res){
         var parameterNom        = req.param('nom');
         var parameterPrenom     = req.param('prenom');
         var parameterEmail      = req.param('email');
@@ -99,7 +76,7 @@ module.exports = {
         
         return res.send(tmpLog);
     },
-    updateUserWithParameters: async function(req, res)
+    updateUser: async function(req, res)
     {
         var paramIdUser     = req.param('idUser');
         var paramNom        = req.param('nom');

@@ -18,7 +18,7 @@ module.exports = {
         return res.send(tmpLog);
     },
 	
-	TopThreeSkillByIdUser: async function(req, res){
+	TopSkillByIdUser: async function(req, res){
 		
 		var idUser = req.param('idUser');
 		var topNumber = req.param('numberTop');
