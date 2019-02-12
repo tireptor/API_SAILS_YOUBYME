@@ -19,10 +19,12 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
+
   '/': { view: 'pages/homepage' },
   'get /user/login/:email/:password' : 'UserController.login',                                    // Authentification à l'application
   'get /user/currentSession': 'UserController.currentSession',                                    // Session en cours
-  'get /user/disconnect': 'UserController.disconnect',                                            // Déconnexion
+  'get /user/disconnect': 'UserController.disconnect',
+'get /vote/voteUser/:idPeriode/:idPersVotant/:idPersVote/:idSoftSkill': 'SoftskillController.addVoteSoftSkill',                //:id passage de paramètre dans l'URL  // Déconnexion
   'get /vote/getAllVoteByIdSession/:id': 'VoteController.tracaVoteWhereIdPeriode',                //:id passage de paramètre dans l'URL
   'get /vote/getAllSessionVoteWhereIdPilote/:id': 'SessionVoteController.allSessionVoteWhereIdPilote',//id d'un pilote en paramètre
   'get /user/create': 'UserController.addUser',
