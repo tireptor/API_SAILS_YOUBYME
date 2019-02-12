@@ -36,6 +36,7 @@ module.exports.routes = {
   'get /user/create': 'UserController.addUser',
   'get /user/createWithParameters/:nom/:prenom/:email/:groupe/:password?': 'UserController.addUserWithParameters',  // le mot de passe est facultatif pour la création d'un utilisateur voir si pertinent ?
   'get /user/updateUserWithParameters/:idUser/:nom/:prenom/:email/:groupe/:password?': 'UserController.updateUserWithParameters',
+  'get /user/count/softskill/:idSoftSkill/:idUser': 'TracaVoteController.countVoteByIdSoftSkill',
   
   'get /promo/getAllPersonnesInPromo/:id': 'PromoController.getAllPersonnesInPromo',    // Récupère toutes les personnes dans une promo
   
