@@ -4,3 +4,5 @@ youbyme_api/package\.json
 youbyme_api/config/datastores\.js
 
 youbyme_api/package-lock\.json
+
+youbyme_api/config/datastore\.js

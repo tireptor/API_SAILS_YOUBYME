@@ -8,7 +8,8 @@
 module.exports = {
   tableName: 't_tracabilite_vote',
   attributes: {
-
+	updatedAt: false,
+    createdAt: false,
     id: {
       type:'number',
       autoIncrement: true,
