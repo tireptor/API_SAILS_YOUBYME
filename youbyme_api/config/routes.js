@@ -20,15 +20,15 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': { view: 'pages/homepage' },
-  'get /user/login/:email/:password' : 'UserController.login',                                    // Authentification à l'application
+  'post /user/login' : 'UserController.login',                                    // Authentification à l'application
+  'get /user/token': 'UserController.token',
   'get /user/currentSession': 'UserController.currentSession',                                    // Session en cours
-  'get /user/disconnect': 'UserController.disconnect',                                            // Déconnexion
   'get /vote/getAllVoteByIdSession/:id': 'VoteController.tracaVoteWhereIdPeriode',                //:id passage de paramètre dans l'URL
   'get /vote/getAllSessionVoteWhereIdPilote/:id': 'SessionVoteController.allSessionVoteWhereIdPilote',//id d'un pilote en paramètre
   'get /user/create': 'UserController.addUser',
   'get /categorie/getAllCategorie': 'CategorieController.getAllCategories',
   'get /promo/getAllPromos': 'PromoController.getAllPromos',
-  'get /user/createWithParameters/:nom/:prenom/:email/:groupe/:password?': 'UserController.addUserWithParameters',  // le mot de passe est facultatif pour la création d'un utilisateur voir si pertinent ?
+  'post /user/addUserWithParameters': 'UserController.addUserWithParameters',  // le mot de passe est facultatif pour la création d'un utilisateur voir si pertinent ?
   'get /user/updateUserWithParameters/:idUser/:nom/:prenom/:email/:groupe/:password?': 'UserController.updateUserWithParameters',
   'get /promo/getAllPersonnesInPromo/:id': 'PromoController.getAllPersonnesInPromo',    // Récupère toutes les personnes dans une promo
   'get /groupe/viewAllGroup': 'GroupeController.getAllGroupes',                         // Récupère tous les groupes existants en base de données
