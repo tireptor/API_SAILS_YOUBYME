@@ -12,13 +12,6 @@ module.exports = {
         });
         return res.send(promo);
     },
-    getAllPeople: async function(req, res){
-        var promo = await Promo.find({
-            where: {id:req.param('id')},
-            select:['nom'],
-        }).populate('users');
-        return res.send(promo);
-    },
     /*
     getAllPilot: async function(req, res)
     {

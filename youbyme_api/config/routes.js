@@ -28,8 +28,7 @@ module.exports.routes = {
   'get /user/updateUser/:idUser/:nom/:prenom/:email/:groupe/:password?': 'UserController.updateUser',
    
   'get /promo/getAll': 'PromoController.getAll',						  		// Récupère toutes les personnes par promo
-  'get /promo/getAllPeople/:id': 'PromoController.getAllPeople',    		// Récupère toutes les personnes dans une promo
-  'get /promo/getAllPilot/:idPromo' : 'PromoController.getAllPilot',
+  'get /promo/pilot/:idPromo' : 'PromoController.getAllPilot',
   
   'get /user/count/softskill/:idSoftSkill/:idUser': 'VoteController.countVoteByIdSoftSkill',
   'get /user/count/topSoftSkill/:idUser/:numberTop': 'VoteController.TopSkillByIdUser',
@@ -43,13 +42,9 @@ module.exports.routes = {
    
                   
   'get /vote/getAllSessionVoteWhereIdPilote/:id': 'SessionVoteController.allSessionVoteWhereIdPilote',//id d'un pilote en paramètre
-  'get /categorie/getAllCategorie': 'CategorieController.getAllCategories',
    
-  'get /groupe/viewAllGroup': 'GroupeController.getAllGroupes',                         // Récupère tous les groupes existants en base de données
-  'get /groupe/usersInGroupe/:id': 'GroupeController.getAllPersonnesInGroupe',          // récupère toutes les personnes associés à l'id du groupe passé en paramètre
+  'get /groupe/all': 'GroupeController.getAllGroupes',                         // Récupère tous les groupes existants en base de données
   
-  
-  //get /user/createWithParameters/:nom:prenom?': 'UserController.addUserWithParameters' Paramètre optionnel
   '/import': 'ImportController.ImportCSV',
   /***************************************************************************
   *                                                                          *
