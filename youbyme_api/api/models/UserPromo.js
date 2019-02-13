@@ -20,7 +20,7 @@ module.exports = {
     user:{
       columnName:'id_t_personne',
       model:'user',
-      unique:true,
+      
     },
     promo:{
       model:'promo',

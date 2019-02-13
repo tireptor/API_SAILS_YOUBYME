@@ -16,27 +16,26 @@ module.exports = {
 		var idUserVoted = req.param('idPersVote');
 		var idSoftSkill = req.param('idSoftSkill');
 				
-        var tracaVoteCreated = await TracaVote.create({ periode: idPeriode, personneVotante: idUserVoting, personneRecevante: idUserVoted, softskill: idSoftSkill, dateVote: dateToday }).fetch();
+        var tracaVoteCreated = await Vote.create({ periode: idPeriode, personneVotante: idUserVoting, personneRecevante: idUserVoted, softskill: idSoftSkill, date: dateToday }).fetch();
         var tmpLog = 'id is:' + tracaVoteCreated.id;   // retourne un log dans le navigateur
         sails.log('id is:', tracaVoteCreated.id);       // retourne un log dans la console
         
         return res.send(tmpLog);
     },
 	
-	addValidateSoftSkill: async function(req, res){
-		var dateToday = getDateToday();
+	createSoftSkill: async function(req, res){
 		
-		var idSoftSkill = req.param('idSoftSkill');
-		var idEleve = req.param('idEleve');
-		var idValidePar = req.param('idValidePar');
-		var dateValidation = getDateToday();
+		var idCategorie = req.param('idCategorie');
+		var nomSoftSkill = req.param('nomSoftSkill');
+		var nomBadge = req.param('nomBadge');
+		var cheminBadge = req.param('cheminBadge');
 				
-        var tracaVoteCreated = await TracaVote.create({ periode: idPeriode, personneVotante: idUserVoting, personneRecevante: idUserVoted, softskill: idSoftSkill, dateVote: '12-02-2019' }).fetch();
-        var tmpLog = 'id is:' + tracaVoteCreated.id;   // retourne un log dans le navigateur
-        sails.log('id is:', tracaVoteCreated.id);       // retourne un log dans la console
+        var skillCreate = await Softskill.create({ idCategorie: idCategorie, nom: nomSoftSkill, nomBadge: nomBadge, cheminBadge: cheminBadge}).fetch();
+        var tmpLog = 'id is:' + skillCreate.id;   // retourne un log dans le navigateur
+        sails.log('id is:', skillCreate.id);       // retourne un log dans la console
         
         return res.send(tmpLog);
-    }
+    },
 };
 
 function getDateToday() {
