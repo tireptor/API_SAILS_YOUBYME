@@ -84,5 +84,16 @@ module.exports = {
 	  
         
 	  return res.send(voted);
-  }
+	},
+	
+	
+	gatherAllUserVoteFromSession: async function(req, res){
+
+      var voted = await Vote.find({
+			where: {periode:req.param('idSession'), personne_recevante:req.param('idUser')},
+			select:['personne_votante','personne_recevante','softskill', 'date']
+	  });
+	         
+	  return res.send(voted);
+	}
 };

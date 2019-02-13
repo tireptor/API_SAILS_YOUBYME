@@ -15,6 +15,7 @@ module.exports = {
       })
       return res.send(sessionVote);
   },
+  
   createVoteSession: async function(req, res){
     var codeAnalytique = req.param('codeAnalytique');
 	var idPersonne = req.param('idPersonne');
@@ -25,14 +26,5 @@ module.exports = {
     var tmpLog = 'id is:' + periodeCreate.id;    // retourne un log dans le navigateur
     sails.log('id is:', periodeCreate.id);            // retourne un log dans la console
     return res.send(tmpLog);
-  },
-  
-  
-  
-  
-  
-  
-  
- 
-
+  }
 };
