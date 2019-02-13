@@ -31,13 +31,15 @@ module.exports.routes = {
   'get /promo/getAllPeople/:id': 'PromoController.getAllPeople',    		// Récupère toutes les personnes dans une promo
   'get /promo/getAllPilot/:idPromo' : 'PromoController.getAllPilot',
   
-  'get /user/count/softskill/:idSoftSkill/:idUser': 'TracaVoteController.countVoteByIdSoftSkill',
-  'get /user/count/topSoftSkill/:idUser/:numberTop': 'TracaVoteController.TopSkillByIdUser',
+  'get /user/count/softskill/:idSoftSkill/:idUser': 'VoteController.countVoteByIdSoftSkill',
+  'get /user/count/topSoftSkill/:idUser/:numberTop': 'VoteController.TopSkillByIdUser',
+  'get /vote/getAllVoteByIdSession/:id': 'VoteController.tracaVoteWhereIdPeriode',
+  'get /vote/checkIfUserVoted/:idUserVoting/:idUserVoted/:idSessionVote': 'VoteController.checkIfUserVoted',
   
   'get /vote/voteUser/:idPeriode/:idPersVotant/:idPersVote/:idSoftSkill': 'SoftskillController.addVoteSoftSkill',                //:id passage de paramètre dans l'URL  // Déconnexion
   'post /validation/addValidationSoftSkill': 'ValidationController.addValidationSoftSkill',
    
-  'get /vote/getAllVoteByIdSession/:id': 'VoteController.tracaVoteWhereIdPeriode',                //:id passage de paramètre dans l'URL
+                  //:id passage de paramètre dans l'URL
   'get /vote/getAllSessionVoteWhereIdPilote/:id': 'SessionVoteController.allSessionVoteWhereIdPilote',//id d'un pilote en paramètre
   'get /categorie/getAllCategorie': 'CategorieController.getAllCategories',
    

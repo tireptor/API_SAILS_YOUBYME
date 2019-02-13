@@ -16,7 +16,7 @@ module.exports = {
 		var idUserVoted = req.param('idPersVote');
 		var idSoftSkill = req.param('idSoftSkill');
 				
-        var tracaVoteCreated = await TracaVote.create({ periode: idPeriode, personneVotante: idUserVoting, personneRecevante: idUserVoted, softskill: idSoftSkill, dateVote: dateToday }).fetch();
+        var tracaVoteCreated = await Vote.create({ periode: idPeriode, personneVotante: idUserVoting, personneRecevante: idUserVoted, softskill: idSoftSkill, date: dateToday }).fetch();
         var tmpLog = 'id is:' + tracaVoteCreated.id;   // retourne un log dans le navigateur
         sails.log('id is:', tracaVoteCreated.id);       // retourne un log dans la console
         
