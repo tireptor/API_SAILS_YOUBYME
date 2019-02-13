@@ -72,5 +72,17 @@ module.exports = {
         sails.log('There is:' + voted + ' vote');     // retourne un log dans la console
         
         return res.send(tmpLog);
+	},
+	
+	gatherAllVoteFromSession: async function(req, res){
+	  var idSession = req.param('idSession');
+
+      var voted = await Vote.find({
+			where: {periode:req.param('id')},
+			select:['personne_votante','personne_recevante','softskill', 'date']
+	  });
+	  
+        
+	  return res.send(voted);
   }
 };
