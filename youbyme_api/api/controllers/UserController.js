@@ -24,7 +24,7 @@ module.exports = {
             if (error) return res.serverError(error);
             if (!matched) return res.serverError("Invalid password.");
     
-            user.token = jwt.sign(user.toJSON(), "votre clé secrète ici", {
+            user.token = jwt.sign(user.toJSON(), "secretKey", {
               expiresIn: '7d'
             });
     

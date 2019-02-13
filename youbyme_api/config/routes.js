@@ -30,7 +30,8 @@ module.exports.routes = {
   'get /promo/getAll': 'PromoController.getAll',						  		// Récupère toutes les personnes par promo
   'get /promo/pilot/:idPromo' : 'PromoController.getAllPilot',
   'get /promo/pilot/bycodeAnalytique/:codeAnalytique' : 'PromoController.getPilotByCodeAnalytique',
-  
+  'put /promo/UpdateNbVote': 'PromoController.updateNbVote',
+
   'get /user/count/softskill/:idSoftSkill/:idUser': 'VoteController.countVoteByIdSoftSkill',
   'get /user/count/topSoftSkill/:idUser/:numberTop': 'VoteController.TopSkillByIdUser',
   'get /vote/getAllVoteByIdSession/:id': 'VoteController.tracaVoteWhereIdPeriode',
@@ -43,6 +44,8 @@ module.exports.routes = {
   
   'post /validation/addValidationSoftSkill': 'ValidationController.addValidationSoftSkill',
   
+  'get /softskill/create/:idCategorie/:nomSoftSkill/:nomBadge/:cheminBadge': 'SoftskillController.createSoftSkill',
+
   'get /vote/getAllSessionVoteWhereIdPilote/:id': 'SessionVoteController.allSessionVoteWhereIdPilote',//id d'un pilote en paramètre
   'get /vote/createVoteSession/:codeAnalytique/:idPersonne/:dateDebut/:dateFin': 'SessionVoteController.createVoteSession',
    

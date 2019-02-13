@@ -35,7 +35,7 @@ module.exports.policies = {
     destroy : 'isAdmin',
   },
   PromoController:{
-    update : 'isLoggedIn',
+    updateNbVote: 'isLoggedIn',
     destroy : 'isAdmin',
   },
   SessionController:{

@@ -37,7 +37,14 @@ module.exports = {
         return res.send(promo);
     }
     */
-
+   updateNbVote: async function(req, res){
+    await Promo.update({id:req.param('idPromo')}).set({
+        nbVote:req.param('nbVote'),
+    });
+    sails.log("Log Update idPromo : " + req.param('idPromo')+ " nbVote : "+req.param('nbVote'));  
+    return res.send('');
+},
+   
 
 };
 

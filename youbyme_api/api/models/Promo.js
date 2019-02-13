@@ -17,7 +17,7 @@ tableName:'t_promotion',
       unique:true,
     },
 
-    nbvote:{
+    nbVote:{
       columnName:'nombre_vote',
       type:'number',
     },
