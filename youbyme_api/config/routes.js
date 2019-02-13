@@ -17,7 +17,7 @@ module.exports.routes = {
   'post /user/addUser': 'UserController.addUser',  																				// Ajout d'un utilisateur					
   'get /user/updateUser/:idUser/:nom/:prenom/:email/:groupe/:password?': 'UserController.updateUser',							// Modification utilisateur
    
-  'put /promo/UpdateNbVote': 'PromoController.updateNbVote',
+  'put /promo/UpdateNbVote': 'PromoController.updateNbVote',																	//Edite le nombre de vote nécéssaire pour l'obtention d'un badge sur une promo
   'get /promo/getAll': 'PromoController.getAll',						  														// Récupère toutes les personnes
   //'get /promo/pilot/:idPromo' : 'PromoController.getAllPilot',																------- non actif
   'get /promo/pilot/bycodeAnalytique/:codeAnalytique' : 'PromoController.getPilotByCodeAnalytique',								// Récupere tous les pilote d'une promo par son code analytique
