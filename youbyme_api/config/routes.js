@@ -39,7 +39,6 @@ module.exports.routes = {
   'get /groupe/viewAllGroup': 'GroupeController.getAllGroupes',                         // Récupère tous les groupes existants en base de données
   'get /groupe/usersInGroupe/:id': 'GroupeController.getAllPersonnesInGroupe',          // récupère toutes les personnes associés à l'id du groupe passé en paramètre
   'post /validation/addValidationSoftSkill': 'ValidationController.addValidationSoftSkill',          // 
-  'get /promo/getAllPilotInPromo/:idPromo' : 'PromoController.getAllPilotInPromo'
   //get /user/createWithParameters/:nom:prenom?': 'UserController.addUserWithParameters' Paramètre optionnel
   '/import': 'ImportController.ImportCSV',
   /***************************************************************************

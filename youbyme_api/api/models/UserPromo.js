@@ -12,16 +12,21 @@ module.exports = {
     updatedAt: false,
     createdAt: false,
 
+    id:{
+      type:'number',
+      autoIncrement: true,
+      columnName:'id',
+    },
     user:{
       columnName:'id_t_personne',
       model:'user',
       unique:true,
     },
-
     promo:{
-      columnName:'code_analytique',
       model:'promo',
+      columnName:'code_analytique',
     },
   },
+
 };
 

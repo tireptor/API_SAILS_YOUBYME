@@ -33,12 +33,7 @@ module.exports = {
         return res.send(promo);
     }
     */
-   getAllPilotInPromo: async function(req, res)
-   {
-       var promo = await Promo.find({}).populate('users',{
-           where: {groupe:'2'},
-       });
-       return res.send(promo);
-   }
+
+
 };
 
