@@ -94,5 +94,11 @@ module.exports = {
             password: paramPassword
           });
         return res.send("UPDATE !");
+    },
+    deleteUser: async function(req, res)
+    {
+        var paramIdUser     = req.param('idUser');
+        await User.destroy({id:paramIdUser});
+        return res.send("DELETE !");
     }
 }

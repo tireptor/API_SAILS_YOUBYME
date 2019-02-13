@@ -20,10 +20,9 @@ module.exports.policies = {
   // '*': true,
   // Policies appliqué pour les fonctions de UserController
   UserController:{
-
+    deleteUser : 'isLoggedIn',
     addUserWithParameters : 'isAdmin',
     update : 'isLoggedIn',
-    destroy : 'isLoggedIn',
     token:'isLoggedIn'
   }, 
   CategorieController:{

@@ -33,7 +33,7 @@ module.exports = function(req, res, next) {
         }
         else
         {
-            return res.forbidden("Error");
+            return res.forbidden("Error user is not admin");
         }
         
       });

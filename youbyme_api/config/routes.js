@@ -26,7 +26,7 @@ module.exports.routes = {
   'get /user/currentSession': 'UserController.currentSession',       				// Session en cours									
   'post /user/addUser': 'UserController.addUser',  									
   'get /user/updateUser/:idUser/:nom/:prenom/:email/:groupe/:password?': 'UserController.updateUser',
-   
+  'put /user/deleteUser':'UserController.deleteUser',
   'get /promo/getAll': 'PromoController.getAll',						  		// Récupère toutes les personnes par promo
   'get /promo/pilot/:idPromo' : 'PromoController.getAllPilot',
   'get /promo/pilot/bycodeAnalytique/:codeAnalytique' : 'PromoController.getPilotByCodeAnalytique',
