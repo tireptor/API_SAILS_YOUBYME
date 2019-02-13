@@ -12,6 +12,21 @@ module.exports = {
         });
         return res.send(promo);
     },
+	getPilotByCodeAnalytique: async function(req, res){
+        var codeAnalytique = req.param('codeAnalytique');
+				
+				
+        var requestPilot = await sails.sendNativeQuery(
+										'SELECT nom_t_personne ' +
+										'FROM t_personne ' +
+										'INNER JOIN t_assoc_promo_personne ON t_personne.id_t_personne = t_assoc_promo_personne.id_t_personne ' +
+										'INNER JOIN t_groupe ON t_groupe.id_t_groupe = t_personne.id_t_groupe ' +
+										'WHERE nom_t_groupe = \'pilotes\' AND code_analytique = \'' + codeAnalytique + '\'');
+									
+        sails.log(requestPilot);     // retourne un log dans la console
+        
+        return res.ok(requestPilot.rows);
+    },
     /*
     getAllPilot: async function(req, res)
     {

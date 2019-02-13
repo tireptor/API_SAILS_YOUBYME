@@ -29,6 +29,7 @@ module.exports.routes = {
    
   'get /promo/getAll': 'PromoController.getAll',						  		// Récupère toutes les personnes par promo
   'get /promo/pilot/:idPromo' : 'PromoController.getAllPilot',
+  'get /promo/pilot/bycodeAnalytique/:codeAnalytique' : 'PromoController.getPilotByCodeAnalytique',
   
   'get /user/count/softskill/:idSoftSkill/:idUser': 'VoteController.countVoteByIdSoftSkill',
   'get /user/count/topSoftSkill/:idUser/:numberTop': 'VoteController.TopSkillByIdUser',
