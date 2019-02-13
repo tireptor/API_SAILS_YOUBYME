@@ -38,12 +38,12 @@ module.exports.routes = {
   'get /vote/gatherAllVoteFromSession/:idSession': 'VoteController.gatherAllVoteFromSession',
   
   'get /vote/voteUser/:idPeriode/:idPersVotant/:idPersVote/:idSoftSkill': 'SoftskillController.addVoteSoftSkill',
+  'get /softskill/create/:idCategorie/:nomSoftSkill/:nomBadge/:cheminBadge': 'SoftskillController.createSoftSkill',
+  
   'post /validation/addValidationSoftSkill': 'ValidationController.addValidationSoftSkill',
   
-  'get /softskill/create/:idCategorie/:nomSoftSkill/:nomBadge/:cheminBadge': 'SoftskillController.createSoftSkill',
-   
-                  
   'get /vote/getAllSessionVoteWhereIdPilote/:id': 'SessionVoteController.allSessionVoteWhereIdPilote',//id d'un pilote en paramètre
+  'get /vote/createVoteSession/:codeAnalytique/:idPersonne/:dateDebut/:dateFin': 'SessionVoteController.createVoteSession',
    
   'get /groupe/all': 'GroupeController.getAllGroupes',                         // Récupère tous les groupes existants en base de données
   

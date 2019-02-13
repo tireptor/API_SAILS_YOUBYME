@@ -26,12 +26,10 @@ module.exports = {
     },
     dateDebut: {
       type:'string',
-      columnType: 'date',
       columnName:'date_debut'
     },
     dateFin: {
       type:'string',
-      columnType: 'date',
       columnName:'date_fin'
     },
   },

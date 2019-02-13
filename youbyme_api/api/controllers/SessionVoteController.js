@@ -15,5 +15,24 @@ module.exports = {
       })
       return res.send(sessionVote);
   },
+  createVoteSession: async function(req, res){
+    var codeAnalytique = req.param('codeAnalytique');
+	var idPersonne = req.param('idPersonne');
+	var dateDebut = req.param('dateDebut');
+	var dateFin = req.param('dateFin');
+		
+    var periodeCreate = await SessionVote.create({ codeAnalytique: codeAnalytique, idPilote: idPersonne, dateDebut: dateDebut, dateFin: dateFin}).fetch();
+    var tmpLog = 'id is:' + periodeCreate.id;    // retourne un log dans le navigateur
+    sails.log('id is:', periodeCreate.id);            // retourne un log dans la console
+    return res.send(tmpLog);
+  },
+  
+  
+  
+  
+  
+  
+  
+ 
 
 };
