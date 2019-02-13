@@ -10,56 +10,34 @@
 
 module.exports.routes = {
 
-  /***************************************************************************
-  *                                                                          *
-  * Make the view located at `views/homepage.ejs` your home page.            *
-  *                                                                          *
-  * (Alternatively, remove this and add an `index.html` file in your         *
-  * `assets` directory)                                                      *
-  *                                                                          *
-  ***************************************************************************/
-
-
   '/': { view: 'pages/homepage' },
-  'post /user/login' : 'UserController.login',                                    	// Authentification à l'application
-  'get /user/token': 'UserController.token',									  	// Recuperation d'un nouveau token
-  'get /user/currentSession': 'UserController.currentSession',       				// Session en cours									
-  'post /user/addUser': 'UserController.addUser',  									
-  'get /user/updateUser/:idUser/:nom/:prenom/:email/:groupe/:password?': 'UserController.updateUser',
-  'put /user/deleteUser':'UserController.deleteUser',
-  'get /promo/getAll': 'PromoController.getAll',						  		// Récupère toutes les personnes par promo
-  'get /promo/pilot/:idPromo' : 'PromoController.getAllPilot',
-  'get /promo/pilot/bycodeAnalytique/:codeAnalytique' : 'PromoController.getPilotByCodeAnalytique',
-  'put /promo/UpdateNbVote': 'PromoController.updateNbVote',
-
-  'get /user/count/softskill/:idSoftSkill/:idUser': 'VoteController.countVoteByIdSoftSkill',
-  'get /user/count/topSoftSkill/:idUser/:numberTop': 'VoteController.TopSkillByIdUser',
-  'get /vote/getAllVoteByIdSession/:id': 'VoteController.tracaVoteWhereIdPeriode',
-  'get /vote/checkIfUserVoted/:idUserVoting/:idUserVoted/:idSessionVote': 'VoteController.checkIfUserVoted', 
-  'get /vote/gatherAllVoteFromSession/:idSession': 'VoteController.gatherAllVoteFromSession',
-  'get /vote/gatherAllUserVoteFromSession/:idSession/:idUser': 'VoteController.gatherAllUserVoteFromSession',
-  
-  'get /vote/voteUser/:idPeriode/:idPersVotant/:idPersVote/:idSoftSkill': 'SoftskillController.addVoteSoftSkill',
-  'get /softskill/create/:idCategorie/:nomSoftSkill/:nomBadge/:cheminBadge': 'SoftskillController.createSoftSkill',
-  
-  'post /validation/addValidationSoftSkill': 'ValidationController.addValidationSoftSkill',
-  
-  'get /softskill/create/:idCategorie/:nomSoftSkill/:nomBadge/:cheminBadge': 'SoftskillController.createSoftSkill',
-
-  'get /vote/getAllSessionVoteWhereIdPilote/:id': 'SessionVoteController.allSessionVoteWhereIdPilote',//id d'un pilote en paramètre
-  'get /vote/createVoteSession/:codeAnalytique/:idPersonne/:dateDebut/:dateFin': 'SessionVoteController.createVoteSession',
+  'post /user/login' : 'UserController.login',                                    												// Authentification à l'application
+  'get /user/token': 'UserController.token',									  												// Recuperation d'un nouveau token
+  'get /user/currentSession': 'UserController.currentSession',       															// Session en cours									
+  'post /user/addUser': 'UserController.addUser',  																				// Ajout d'un utilisateur					
+  'get /user/updateUser/:idUser/:nom/:prenom/:email/:groupe/:password?': 'UserController.updateUser',							// Modification utilisateur
    
-  'get /groupe/all': 'GroupeController.getAllGroupes',                         // Récupère tous les groupes existants en base de données
+  'put /promo/UpdateNbVote': 'PromoController.updateNbVote',																	//Edite le nombre de vote nécéssaire pour l'obtention d'un badge sur une promo
+  'get /promo/getAll': 'PromoController.getAll',						  														// Récupère toutes les personnes
+  //'get /promo/pilot/:idPromo' : 'PromoController.getAllPilot',																------- non actif
+  'get /promo/pilot/bycodeAnalytique/:codeAnalytique' : 'PromoController.getPilotByCodeAnalytique',								// Récupere tous les pilote d'une promo par son code analytique
   
-  '/import': 'ImportController.ImportCSV',
-  /***************************************************************************
-  *                                                                          *
-  * More custom routes here...                                               *
-  * (See https://sailsjs.com/config/routes for examples.)                    *
-  *                                                                          *
-  * If a request to a URL doesn't match any of the routes in this file, it   *
-  * is matched against "shadow routes" (e.g. blueprint routes).  If it does  *
-  * not match any of those, it is matched against static assets.             *
-  *                                                                          *
-  ***************************************************************************/
+  'get /user/count/softskill/:idSoftSkill/:idUser': 'VoteController.countVoteByIdSoftSkill',									// Compte les votes d'une personne pour un SoftSkill
+  'get /user/count/topSoftSkill/:idUser/:numberTop': 'VoteController.TopSkillByIdUser',											// Récupère les X soft skill ou la personne à reçu le plus de vote
+  //'get /vote/getAllVoteByIdSession/:id': 'VoteController.tracaVoteWhereIdPeriode',											-------- a confirmer duplicata ?
+  'get /vote/checkIfUserVoted/:idUserVoting/:idUserVoted/:idSessionVote': 'VoteController.checkIfUserVoted',					// Récupère le nombre de vote d'un utilisateur pour une session
+  'get /vote/gatherAllVoteFromSession/:idSession': 'VoteController.gatherAllVoteFromSession',									// Récupère tous les votes d'une session
+  'get /vote/gatherAllUserVoteFromSession/:idSession/:idUser': 'VoteController.gatherAllUserVoteFromSession',   				// Récupère tous les votes d'un utilisateur pour une session
+  
+  'get /vote/voteUser/:idPeriode/:idPersVotant/:idPersVote/:idSoftSkill': 'SoftskillController.addVoteSoftSkill',				//Ajoute un vote (badge)
+  'get /softskill/create/:idCategorie/:nomSoftSkill/:nomBadge/:cheminBadge': 'SoftskillController.createSoftSkill',				//Ajoute un soft Skill
+  
+  'post /validation/addValidationSoftSkill': 'ValidationController.addValidationSoftSkill',										//Permet de valider l'attribution d'un badge
+  
+  'get /vote/getAllSessionVoteWhereIdPilote/:id': 'SessionVoteController.allSessionVoteWhereIdPilote',							//Récupere toutes les session initialisé par un pilote X
+  'get /vote/createVoteSession/:codeAnalytique/:idPersonne/:dateDebut/:dateFin': 'SessionVoteController.createVoteSession',		//Ajoute une session de vote
+   
+  'get /groupe/all': 'GroupeController.getAllGroupes',                         													// Récupère tous les groupes existants en base de données
+  
+  '/import': 'ImportController.ImportCSV',																						//Créer des utilisateur et effectue l'association pour les promotions grâce à un fichier CSV
 };
