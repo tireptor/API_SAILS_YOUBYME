@@ -36,10 +36,12 @@ module.exports.routes = {
   'get /vote/getAllVoteByIdSession/:id': 'VoteController.tracaVoteWhereIdPeriode',
   'get /vote/checkIfUserVoted/:idUserVoting/:idUserVoted/:idSessionVote': 'VoteController.checkIfUserVoted',
   
-  'get /vote/voteUser/:idPeriode/:idPersVotant/:idPersVote/:idSoftSkill': 'SoftskillController.addVoteSoftSkill',                //:id passage de paramètre dans l'URL  // Déconnexion
+  'get /vote/voteUser/:idPeriode/:idPersVotant/:idPersVote/:idSoftSkill': 'SoftskillController.addVoteSoftSkill',
   'post /validation/addValidationSoftSkill': 'ValidationController.addValidationSoftSkill',
+  
+  'get /softskill/create/:idCategorie/:nomSoftSkill/:nomBadge/:cheminBadge': 'SoftskillController.createSoftSkill',
    
-                  //:id passage de paramètre dans l'URL
+                  
   'get /vote/getAllSessionVoteWhereIdPilote/:id': 'SessionVoteController.allSessionVoteWhereIdPilote',//id d'un pilote en paramètre
   'get /categorie/getAllCategorie': 'CategorieController.getAllCategories',
    

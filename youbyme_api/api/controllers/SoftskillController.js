@@ -22,6 +22,20 @@ module.exports = {
         
         return res.send(tmpLog);
     },
+	
+	createSoftSkill: async function(req, res){
+		
+		var idCategorie = req.param('idCategorie');
+		var nomSoftSkill = req.param('nomSoftSkill');
+		var nomBadge = req.param('nomBadge');
+		var cheminBadge = req.param('cheminBadge');
+				
+        var skillCreate = await Softskill.create({ idCategorie: idCategorie, nom: nomSoftSkill, nomBadge: nomBadge, cheminBadge: cheminBadge}).fetch();
+        var tmpLog = 'id is:' + skillCreate.id;   // retourne un log dans le navigateur
+        sails.log('id is:', skillCreate.id);       // retourne un log dans la console
+        
+        return res.send(tmpLog);
+    },
 };
 
 function getDateToday() {
