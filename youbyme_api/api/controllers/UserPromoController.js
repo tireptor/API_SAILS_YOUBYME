@@ -15,5 +15,12 @@ module.exports = {
         });
         return res.send(userPromo);
     },
-
+    getAllStudentInPromo: async function (req, res)
+    {
+        var userPromo = await UserPromo.find({promo:req.param('idPromo')}).populate('user',{
+            select:['nom'],
+            where: {'groupe':'1'},
+        });
+        return res.send(userPromo);
+    },
 }

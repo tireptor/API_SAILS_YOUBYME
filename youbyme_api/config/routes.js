@@ -21,7 +21,9 @@ module.exports.routes = {
   'get /promo/getAll': 'PromoController.getAll',						  														// Récupère toutes les personnes
   //'get /promo/pilot/:idPromo' : 'PromoController.getAllPilot',																------- non actif
   'get /promo/pilot/bycodeAnalytique/:codeAnalytique' : 'PromoController.getPilotByCodeAnalytique',								// Récupere tous les pilote d'une promo par son code analytique
-  
+  'get /promo/getAllStudentInPromo/:codeAnalytique' : 'promoController.getAllStudentInPromo',
+  'post /promo/insertUserInPromo' : 'promoController.insertUserInPromo',
+  'post /promo/updatePromoForUser' : 'promoController.updatePromoForUser',
   'get /user/count/softskill/:idSoftSkill/:idUser': 'VoteController.countVoteByIdSoftSkill',									// Compte les votes d'une personne pour un SoftSkill
   'get /user/count/topSoftSkill/:idUser/:numberTop': 'VoteController.TopSkillByIdUser',											// Récupère les X soft skill ou la personne à reçu le plus de vote
   //'get /vote/getAllVoteByIdSession/:id': 'VoteController.tracaVoteWhereIdPeriode',											-------- a confirmer duplicata ?
@@ -39,5 +41,5 @@ module.exports.routes = {
    
   'get /groupe/all': 'GroupeController.getAllGroupes',                         													// Récupère tous les groupes existants en base de données
   
-  '/import': 'ImportController.ImportCSV',																						//Créer des utilisateur et effectue l'association pour les promotions grâce à un fichier CSV
+  'post /import': 'ImportController.ImportCSV',																						//Créer des utilisateur et effectue l'association pour les promotions grâce à un fichier CSV
 };

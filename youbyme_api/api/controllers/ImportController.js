@@ -10,7 +10,7 @@
 module.exports = {
   
     ImportCSV: async function(req, res){
-        const csvFilePath='/home/hugo/Bureau/export-ril17.csv'
+        const csvFilePath=req.param('path');
         const csv=require('csvtojson')
         let importReq;
         let assocReq;
