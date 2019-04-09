@@ -50,6 +50,21 @@ module.exports = {
     
         return res.ok(requestPilot.rows);
     },
+    getAllUserInPromo: async function(req, res){
+        var codeAnalytique = req.param('codeAnalytique');
+            
+            
+        var requestPilot = await sails.sendNativeQuery(
+                                    'SELECT nom_t_personne, prenom_t_personne, email_t_personne, t_personne.id_t_personne, photo, nom_t_groupe ' +
+                                    'FROM t_personne ' +
+                                    'INNER JOIN t_assoc_promo_personne ON t_personne.id_t_personne = t_assoc_promo_personne.id_t_personne ' +
+                                    'INNER JOIN t_groupe ON t_groupe.id_t_groupe = t_personne.id_t_groupe ' +
+                                    'WHERE code_analytique = \'' + codeAnalytique + '\'');
+                                
+        sails.log(requestPilot);     // retourne un log dans la console
+    
+        return res.ok(requestPilot.rows);
+    },
 
     insertUserInPromo: async function(req, res){
         var codeAnalytique = req.param('codeAnalytique');

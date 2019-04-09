@@ -22,6 +22,7 @@ module.exports.routes = {
   //'get /promo/pilot/:idPromo' : 'PromoController.getAllPilot',																------- non actif
   'get /promo/pilot/bycodeAnalytique/:codeAnalytique' : 'PromoController.getPilotByCodeAnalytique',								// Récupere tous les pilote d'une promo par son code analytique
   'get /promo/getAllStudentInPromo/:codeAnalytique' : 'promoController.getAllStudentInPromo',
+  'get /promo/getAllUserInPromo/:codeAnalytique' : 'promoController.getAllUserInPromo',
   'post /promo/insertUserInPromo' : 'promoController.insertUserInPromo',
   'post /promo/updatePromoForUser' : 'promoController.updatePromoForUser',
   'get /user/count/softskill/:idSoftSkill/:idUser': 'VoteController.countVoteByIdSoftSkill',									// Compte les votes d'une personne pour un SoftSkill
