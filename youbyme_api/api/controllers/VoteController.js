@@ -77,6 +77,17 @@ module.exports = {
         return res.send(voted+'');
 	},
 	
+	checkIfUserVotedForSession: async function(req, res){
+		var idUserVoting = req.param('idUserVoting');
+		var idUserVotedFor = req.param('idUserVoted');
+		var idSessionVote = req.param('idSessionVote');
+		var voted = await Vote.count({personne_votante:idUserVoting, personne_recevante:idUserVotedFor, periode:idSessionVote});
+		var tmpLog = 'There is:' + voted + ' vote';   // retourne un log dans le navigateur
+		  sails.log('There is:' + voted + ' vote');     // retourne un log dans la console
+		  
+		  return res.send(voted+'');
+	  },
+
 	allVoteObtained: async function(req, res){
 
       var voted = await Vote.find({
