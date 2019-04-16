@@ -57,6 +57,7 @@ module.exports = {
     },
     date: {
       type:'string',
+      columnType:'date',
       columnName:'date_vote'
     },
   },

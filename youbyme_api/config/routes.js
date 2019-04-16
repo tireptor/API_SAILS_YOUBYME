@@ -33,7 +33,7 @@ module.exports.routes = {
   'get /vote/checkIfUserVotedForSession/:idUserVoting/:idSessionVote': 'VoteController.checkIfUserVotedForSession',
   'get /vote/gatherAllVoteFromSession/:idSession': 'VoteController.gatherAllVoteFromSession',									// Récupère tous les votes d'une session
   'get /vote/gatherAllUserVoteFromSession/:idSession/:idUser': 'VoteController.gatherAllUserVoteFromSession',   				// Récupère tous les votes d'un utilisateur pour une session
-  'get /vote/getIfVoteDone/:isUserVoting/:idUserVoted/:idPeriode/:idSoftskill': 'VoteController.getIfVoteDone',
+  'get /vote/getIfVoteDone/:idUserVoting/:idUserVoted/:idPeriode/:idSoftskill': 'VoteController.getIfVoteDone',
   'get /vote/allVoteObtained/:idUser': 'VoteController.allVoteObtained',
   'post /vote/voteUser/': 'SoftskillController.addVoteSoftSkill',				//Ajoute un vote (badge)
   'get /softskill/create/:idCategorie/:nomSoftSkill/:nomBadge/:cheminBadge': 'SoftskillController.createSoftSkill',				//Ajoute un soft Skill

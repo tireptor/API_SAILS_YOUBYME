@@ -81,11 +81,22 @@ module.exports = {
 		var idUserVoting = req.param('idUserVoting');
 		var idSessionVote = req.param('idSessionVote');
 		console.log("On passe dans le check")
-		var voted = await Vote.native.count({ where: {personne_votante:idUserVoting, periode:idSessionVote}, distinct : 'personne_recevante'});
-		var tmpLog = 'There is:' + voted + ' vote';   // retourne un log dans le navigateur
-		  sails.log('There is:' + voted + ' vote');     // retourne un log dans la console
-		  
-		  return res.send(voted+'');
+		var promoNbVote = await sails.sendNativeQuery(
+			'SELECT nombre_vote ' + 
+			'FROM t_promotion, t_assoc_promo_personne ' +
+			'WHERE id_t_personne = '+ idUserVoting + ' AND t_assoc_promo_personne.code_analytique = t_promotion.code_analytique'
+	);
+		var voted = await sails.sendNativeQuery(
+			'SELECT COUNT (DISTINCT id_personne_recevante) ' + 
+			'FROM t_tracabilite_vote ' +
+			'WHERE id_personne_votante = '+ idUserVoting + ' AND id_periode = '+idSessionVote + ''
+	);
+		
+			if ( promoNbVote.rows[0].nombre_vote == voted.rows[0].count)	
+			{
+				return res.ok(voted.rows);
+			}
+			return res.send("nok");
 	  },
 
 	allVoteObtained: async function(req, res){
@@ -102,11 +113,8 @@ module.exports = {
 		var idUserVotedFor = req.param('idUserVoted');
 		var idPeriode = req.param('idPeriode');
 		var idSoftskill = req.param('idSoftskill')
-		var voted = await Vote.count({personne_votante:idUserVoting, personne_recevante:idUserVotedFor, periode:idPeriode, softskill : idSoftskill});
-		var tmpLog = 'There is:' + voted + ' vote';   // retourne un log dans le navigateur
-		  sails.log('There is:' + voted + ' vote');     // retourne un log dans la console
-		  
-		  return res.send(voted+'');
+		var result = await Vote.find({personne_votante:idUserVoting, personne_recevante : idUserVotedFor, periode : idPeriode, softskill : idSoftskill});
+		  return res.send(result);
 	  },
 	gatherAllVoteFromSession: async function(req, res){
 		var idSession = req.param('idSession');
