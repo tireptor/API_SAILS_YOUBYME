@@ -30,8 +30,10 @@ module.exports.routes = {
   'get /user/count/softskillByIdUserIdSoftskill/:idUser/:idSoftskill': 'VoteController.softskillByIdUserIdSoft',	
   //'get /vote/getAllVoteByIdSession/:id': 'VoteController.tracaVoteWhereIdPeriode',											-------- a confirmer duplicata ?
   'get /vote/checkIfUserVoted/:idUserVoting/:idUserVoted/:idSessionVote': 'VoteController.checkIfUserVoted',					// Récupère le nombre de vote d'un utilisateur pour une session
+  'get /vote/checkIfUserVotedForSession/:idUserVoting/:idSessionVote': 'VoteController.checkIfUserVotedForSession',
   'get /vote/gatherAllVoteFromSession/:idSession': 'VoteController.gatherAllVoteFromSession',									// Récupère tous les votes d'une session
   'get /vote/gatherAllUserVoteFromSession/:idSession/:idUser': 'VoteController.gatherAllUserVoteFromSession',   				// Récupère tous les votes d'un utilisateur pour une session
+  'get /vote/getIfVoteDone/:isUserVoting/:idUserVoted/:idPeriode/:idSoftskill': 'VoteController.getIfVoteDone',
   'get /vote/allVoteObtained/:idUser': 'VoteController.allVoteObtained',
   'post /vote/voteUser/': 'SoftskillController.addVoteSoftSkill',				//Ajoute un vote (badge)
   'get /softskill/create/:idCategorie/:nomSoftSkill/:nomBadge/:cheminBadge': 'SoftskillController.createSoftSkill',				//Ajoute un soft Skill

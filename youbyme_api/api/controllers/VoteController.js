@@ -79,9 +79,9 @@ module.exports = {
 	
 	checkIfUserVotedForSession: async function(req, res){
 		var idUserVoting = req.param('idUserVoting');
-		var idUserVotedFor = req.param('idUserVoted');
 		var idSessionVote = req.param('idSessionVote');
-		var voted = await Vote.count({personne_votante:idUserVoting, personne_recevante:idUserVotedFor, periode:idSessionVote});
+		console.log("On passe dans le check")
+		var voted = await Vote.native.count({ where: {personne_votante:idUserVoting, periode:idSessionVote}, distinct : 'personne_recevante'});
 		var tmpLog = 'There is:' + voted + ' vote';   // retourne un log dans le navigateur
 		  sails.log('There is:' + voted + ' vote');     // retourne un log dans la console
 		  
@@ -97,6 +97,17 @@ module.exports = {
 	  return res.send(voted);
 	},
 	
+	getIfVoteDone: async function(req, res){
+		var idUserVoting = req.param('idUserVoting');
+		var idUserVotedFor = req.param('idUserVoted');
+		var idPeriode = req.param('idPeriode');
+		var idSoftskill = req.param('idSoftskill')
+		var voted = await Vote.count({personne_votante:idUserVoting, personne_recevante:idUserVotedFor, periode:idPeriode, softskill : idSoftskill});
+		var tmpLog = 'There is:' + voted + ' vote';   // retourne un log dans le navigateur
+		  sails.log('There is:' + voted + ' vote');     // retourne un log dans la console
+		  
+		  return res.send(voted+'');
+	  },
 	gatherAllVoteFromSession: async function(req, res){
 		var idSession = req.param('idSession');
   
