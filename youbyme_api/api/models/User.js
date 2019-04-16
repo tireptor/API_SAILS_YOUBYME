@@ -39,17 +39,14 @@ module.exports = {
     },
     password: {
       type:'string',
-      columnName:'password_t_personne'
+      columnName:'password_t_personne',
+      defaultsTo: '1234',      
     },
     email: {
       type:'string',
       columnName:'email_t_personne',
       unique: true,
       required: true,
-    },
-    password:{
-      type:'string',
-      columnName:'password_t_personne',
     },
     picture:{
       type:'string',

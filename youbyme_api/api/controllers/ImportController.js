@@ -9,13 +9,16 @@
 
 module.exports = {
   
-    ImportCSV: async function(req, res){
-        const csvFilePath=req.param('path');
-        const csv=require('csvtojson')
+    uploadFile : async function(req, res){
+		req.file('file').upload({
+			
+		},function(err, file){
+			if(err) console.log(err);
+		const csv=require('csvtojson');
         let importReq;
         let assocReq;
         csv()
-        .fromFile(csvFilePath)
+        .fromFile(file[0].fd)
         .then(async function(jsonArrayObj){
             for (var index in jsonArrayObj){
                 importReq = await User.findOrCreate({email: jsonArrayObj[index].EmailStagiaire},
@@ -30,6 +33,7 @@ module.exports = {
             }
         })
         return res.ok();
-    }
+		});
+    },
 };
 

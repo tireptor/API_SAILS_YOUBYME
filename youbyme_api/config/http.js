@@ -29,16 +29,18 @@ module.exports.http = {
     *                                                                          *
     ***************************************************************************/
 
-    // order: [
+   addCount: require('sails-count-middleware'),
+    order: [
     //   'cookieParser',
     //   'session',
-    //   'bodyParser',
+       'bodyParser',
     //   'compress',
     //   'poweredBy',
     //   'router',
     //   'www',
+    'addCount',
     //   'favicon',
-    // ],
+    ],
 
 
     /***************************************************************************
@@ -49,11 +51,11 @@ module.exports.http = {
     *                                                                          *
     ***************************************************************************/
 
-    // bodyParser: (function _configureBodyParser(){
-    //   var skipper = require('skipper');
-    //   var middlewareFn = skipper({ strict: true });
-    //   return middlewareFn;
-    // })(),
+    bodyParser: (function _configureBodyParser(){
+     var skipper = require('skipper');
+       var middlewareFn = skipper({ strict: true });
+       return middlewareFn;
+     })(),
 
   },
 
