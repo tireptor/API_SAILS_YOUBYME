@@ -30,6 +30,11 @@ module.exports = {
       columnName:'chemin_badge', 
 	  allowNull: true,
     },
+    badges:{
+      collection:'badge',
+      //type:'number',
+      via:'id_t_badge',
+    },
   },
 
 };

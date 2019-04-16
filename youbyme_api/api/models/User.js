@@ -20,10 +20,12 @@ module.exports = {
       model:'groupe'
     },
     votants: {
+      type:'number',
       collection:'vote',
       via:'personne_votante',
     },
     recevants: {
+      type:'number',
       collection:'vote',
       via:'personne_recevante',
     },
@@ -49,8 +51,10 @@ module.exports = {
       type:'string',
       columnName:'password_t_personne',
     },
-
-
+    picture:{
+      type:'string',
+      columnName:'photo'
+    },
     promos:{
       collection:'promo',
       via:'user',
@@ -74,5 +78,17 @@ module.exports = {
       values.password = hash;
       cb();
     });
-  }
+  },
+  getPilots:function (codeAnalytique)
+  {
+    return sails.sendNativeQuery(
+      'SELECT nom_t_personne ' +
+      'FROM t_personne ' +
+      'INNER JOIN t_assoc_promo_personne ON t_personne.id_t_personne = t_assoc_promo_personne.id_t_personne ' +
+      'INNER JOIN t_groupe ON t_groupe.id_t_groupe = t_personne.id_t_groupe ' +
+      'WHERE nom_t_groupe = \'pilotes\' AND code_analytique = \'' + codeAnalytique + '\'');
+      
+  } 
+
+  
 };

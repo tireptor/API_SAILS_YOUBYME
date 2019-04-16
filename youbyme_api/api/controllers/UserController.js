@@ -15,18 +15,29 @@ module.exports = {
     
         User.findOne({
           email: req.param('email')
-        }).exec(function callback(err, user) {
+        }).populate('promos').exec(function callback(err, user) {
           if (err) return res.serverError(err);
           if (!user) return res.serverError("User not found, please sign up.");
     
           // check password
-          bcrypt.compare(req.param('password'), user.password, function(error, matched) {
+          bcrypt.compare(req.param('password'), user.password, async function(error, matched) {
             if (error) return res.serverError(error);
             if (!matched) return res.serverError("Invalid password.");
-    
+            console.log(user)
             user.token = jwt.sign(user.toJSON(), "secretKey", {
               expiresIn: '7d'
             });
+            //
+            
+            // var requestPromoForUser = await sails.sendNativeQuery(
+            //   'SELECT t_assoc_promo_personne.code_analytique ' +
+            //   'FROM t_personne, t_assoc_promo_personne ' +
+            //   'WHERE t_personne.id_t_personne =  t_assoc_promo_personne.id_t_personne AND t_personne.id_t_personne = \'' + user.id + '\'');
+
+            // console.log('résultat de la requête : '+requestPromoForUser);
+
+            // //
+            // user.test = '789'
     
             res.ok(user);
           });

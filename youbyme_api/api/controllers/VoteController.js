@@ -12,22 +12,6 @@ module.exports = {
           where: {periode:req.param('id')},
           select:['id','periode','date'],
       }).populate('softskill').populate('personne_votante').populate('personne_recevante');
-      /**
-      var softSkillName = await SoftSkill.find({
-        where: {id:vote.idSoft},
-        select:['id','nom'],
-      })
-       
-      var nbVote = vote.length; 
-
-      for(var i= 0; i < nbVote; i++)
-        {
-            return res.json(vote[i].idSoft);
-        }   
-
-      var mesValeurs = vote[0].idSoft+''+vote[1].idSoft+vote[2].idSoft;
-      return res.json(mesValeurs)
-      */
       return res.send(vote);
   },
   
@@ -50,10 +34,10 @@ module.exports = {
 				
 				
         var getVoteSoftSkill = await sails.sendNativeQuery(
-									'SELECT id_t_soft_skill, count(*) ' + 
-									'FROM t_tracabilite_vote ' +
-									'WHERE id_personne_recevante = '+ idUser + ' ' +
-									'GROUP BY id_t_soft_skill ' +
+									'SELECT t_tracabilite_vote.id_t_soft_skill, t_soft_skill.nom_soft_skill, t_soft_skill.nom_badge, t_soft_skill.chemin_badge, count(*) ' + 
+									'FROM t_tracabilite_vote, t_soft_skill ' +
+									'WHERE id_personne_recevante = '+ idUser + ' AND t_tracabilite_vote.id_t_soft_skill = t_soft_skill.id_t_soft_skill '+
+									'GROUP BY t_tracabilite_vote.id_t_soft_skill, t_soft_skill.nom_soft_skill, t_soft_skill.nom_badge, t_soft_skill.chemin_badge ' +
 									'ORDER BY count(*) DESC ' +
 									'LIMIT ' + topNumber);
 									
@@ -61,7 +45,26 @@ module.exports = {
         sails.log(getVoteSoftSkill);     // retourne un log dans la console
         
         return res.ok(getVoteSoftSkill.rows);
-    },
+	},
+	softskillByIdUserIdSoft: async function(req, res){
+		
+		var idUser = req.param('idUser');
+		var idSoftskill = req.param('idSoftskill');
+				
+				
+        var getVoteSoftSkill = await sails.sendNativeQuery(
+									'SELECT t_tracabilite_vote.id_t_soft_skill, t_soft_skill.nom_soft_skill, t_soft_skill.nom_badge, t_soft_skill.chemin_badge, count(*) ' + 
+									'FROM t_tracabilite_vote, t_soft_skill ' +
+									'WHERE id_personne_recevante = '+ idUser + ' AND t_tracabilite_vote.id_t_soft_skill = t_soft_skill.id_t_soft_skill AND '+ 
+									't_soft_skill.id_t_soft_skill = '+ idSoftskill+' '+
+									'GROUP BY t_tracabilite_vote.id_t_soft_skill, t_soft_skill.nom_soft_skill, t_soft_skill.nom_badge, t_soft_skill.chemin_badge ' +
+									'ORDER BY count(*) DESC ');
+									
+        //var tmpLog = getVoteSoftSkill   // retourne un log dans le navigateur
+        sails.log(getVoteSoftSkill);     // retourne un log dans la console
+        
+        return res.ok(getVoteSoftSkill.rows);
+	},
   
 	checkIfUserVoted: async function(req, res){
 	  var idUserVoting = req.param('idUserVoting');
@@ -71,22 +74,29 @@ module.exports = {
 	  var tmpLog = 'There is:' + voted + ' vote';   // retourne un log dans le navigateur
         sails.log('There is:' + voted + ' vote');     // retourne un log dans la console
         
-        return res.send(tmpLog);
+        return res.send(voted+'');
 	},
 	
-	gatherAllVoteFromSession: async function(req, res){
-	  var idSession = req.param('idSession');
+	allVoteObtained: async function(req, res){
 
       var voted = await Vote.find({
-			where: {periode:req.param('id')},
-			select:['personne_votante','personne_recevante','softskill', 'date']
-	  });
-	  
-        
+			where: {personne_recevante:req.param('idUser')},
+			select:['personne_votante','softskill', 'date','periode']
+	  }).populate('personne_votante');
 	  return res.send(voted);
 	},
 	
-	
+	gatherAllVoteFromSession: async function(req, res){
+		var idSession = req.param('idSession');
+  
+		var voted = await Vote.find({
+			  where: {periode:req.param('id')},
+			  select:['personne_votante','personne_recevante','softskill', 'date']
+		});
+		
+		  
+		return res.send(voted);
+	  },
 	gatherAllUserVoteFromSession: async function(req, res){
 
       var voted = await Vote.find({

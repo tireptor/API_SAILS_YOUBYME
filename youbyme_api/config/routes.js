@@ -27,17 +27,22 @@ module.exports.routes = {
   'post /promo/updatePromoForUser' : 'promoController.updatePromoForUser',
   'get /user/count/softskill/:idSoftSkill/:idUser': 'VoteController.countVoteByIdSoftSkill',									// Compte les votes d'une personne pour un SoftSkill
   'get /user/count/topSoftSkill/:idUser/:numberTop': 'VoteController.TopSkillByIdUser',											// Récupère les X soft skill ou la personne à reçu le plus de vote
+  'get /user/count/softskillByIdUserIdSoftskill/:idUser/:idSoftskill': 'VoteController.softskillByIdUserIdSoft',	
   //'get /vote/getAllVoteByIdSession/:id': 'VoteController.tracaVoteWhereIdPeriode',											-------- a confirmer duplicata ?
   'get /vote/checkIfUserVoted/:idUserVoting/:idUserVoted/:idSessionVote': 'VoteController.checkIfUserVoted',					// Récupère le nombre de vote d'un utilisateur pour une session
   'get /vote/gatherAllVoteFromSession/:idSession': 'VoteController.gatherAllVoteFromSession',									// Récupère tous les votes d'une session
   'get /vote/gatherAllUserVoteFromSession/:idSession/:idUser': 'VoteController.gatherAllUserVoteFromSession',   				// Récupère tous les votes d'un utilisateur pour une session
-  
-  'get /vote/voteUser/:idPeriode/:idPersVotant/:idPersVote/:idSoftSkill': 'SoftskillController.addVoteSoftSkill',				//Ajoute un vote (badge)
+  'get /vote/allVoteObtained/:idUser': 'VoteController.allVoteObtained',
+  'post /vote/voteUser/': 'SoftskillController.addVoteSoftSkill',				//Ajoute un vote (badge)
   'get /softskill/create/:idCategorie/:nomSoftSkill/:nomBadge/:cheminBadge': 'SoftskillController.createSoftSkill',				//Ajoute un soft Skill
-  
+  'get /softskill/categorie/:idCategorie': 'SoftskillController.softskillForCategorie',
+  'get /softskill/all/': 'SoftskillController.selectAllSoftskill',
   'post /validation/addValidationSoftSkill': 'ValidationController.addValidationSoftSkill',										//Permet de valider l'attribution d'un badge
   
   'get /vote/getAllSessionVoteWhereIdPilote/:id': 'SessionVoteController.allSessionVoteWhereIdPilote',							//Récupere toutes les session initialisé par un pilote X
+  'get /vote/getAllSessionVoteWithUsersWherePromo/:codeAnalytique': 'SessionVoteController.allSessionWithUsersVoteWherePromo',
+  'get /vote/getAllSessionVoteWithPilotWherePromo/:codeAnalytique': 'SessionVoteController.allSessionWithPilotVoteWherePromo',
+  'get /vote/getAllSessionActiveWithPilotVoteWherePromo/:codeAnalytique': 'SessionVoteController.allSessionActiveWithPilotVoteWherePromo',
   'get /vote/createVoteSession/:codeAnalytique/:idPersonne/:dateDebut/:dateFin': 'SessionVoteController.createVoteSession',		//Ajoute une session de vote
    
   'get /groupe/all': 'GroupeController.getAllGroupes',                         													// Récupère tous les groupes existants en base de données

@@ -19,12 +19,6 @@ module.exports.policies = {
 
   // '*': true,
   // Policies appliqué pour les fonctions de UserController
-  UserController:{
-    deleteUser : 'isLoggedIn',
-    addUserWithParameters : 'isAdmin',
-    update : 'isLoggedIn',
-    token:'isLoggedIn'
-  }, 
   CategorieController:{
     update : 'isLoggedIn',
     destroy : 'isAdmin',
@@ -34,12 +28,14 @@ module.exports.policies = {
     destroy : 'isAdmin',
   },
   PromoController:{
+    getPilotByCodeAnalytique : 'isLoggedIn',
     updateNbVote: 'isLoggedIn',
     destroy : 'isAdmin',
   },
   SessionController:{
+    create: 'isPilot',
     update : 'isLoggedIn',
-    destroy : 'isAdmin',
+    destroy : 'isPilot',
   },
   SessionVoteController:
   {
@@ -49,12 +45,12 @@ module.exports.policies = {
   SoftskillController:{
     create : 'isAdmin',
     update : 'isLoggedIn',
-    destroy : 'isAdmin',
+    destroy : 'isLoggedIn',
   },
   TracaVoteController:{
     create : 'isLoggedIn',
     update : 'isLoggedIn',
-    destroy : 'isAdmin',
+    destroy : 'isLoggedIn',
   },
   UserController:{
     create : 'isAdmin',
@@ -64,7 +60,7 @@ module.exports.policies = {
   VoteController:{
     create : 'isLoggedIn',
     update : 'isLoggedIn',
-    destroy : 'isAdmin',
+    destroy : 'isLoggedIn',
   },
   ValidationController:{
     create : 'isLoggedIn',

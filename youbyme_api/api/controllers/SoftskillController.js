@@ -15,13 +15,35 @@ module.exports = {
 		var idUserVoting = req.param('idPersVotant');
 		var idUserVoted = req.param('idPersVote');
 		var idSoftSkill = req.param('idSoftSkill');
-				
-        var tracaVoteCreated = await Vote.create({ periode: idPeriode, personneVotante: idUserVoting, personneRecevante: idUserVoted, softskill: idSoftSkill, date: dateToday }).fetch();
-        var tmpLog = 'id is:' + tracaVoteCreated.id;   // retourne un log dans le navigateur
-        sails.log('id is:', tracaVoteCreated.id);       // retourne un log dans la console
+		console.log('Vote pour ' + idUserVoted + 'Votant : '+ idUserVoting)
+        var tracaVoteCreated = await Vote.create({ periode: idPeriode, personne_votante: idUserVoting, personne_recevante: idUserVoted, softskill: idSoftSkill, date: dateToday }).fetch();
+		var tmpLog = 'id is:' + tracaVoteCreated.id + 'votant : ' + tracaVoteCreated.personneVotante;   // retourne un log dans le navigateur
+        sails.log(tmpLog);       // retourne un log dans la console
         
-        return res.send(tmpLog);
-    },
+        return res.ok(tracaVoteCreated.id);
+	},
+	softskillForCategorie: async function(req, res){
+		var softskill = await Softskill.find({
+			where: {idCategorie:req.param('idCategorie')},
+			select:['id','nom','nomBadge','cheminBadge','idCategorie'],
+		});
+		return res.send(softskill);
+	},
+
+	softskillForCategorieByIdUser: async function(req, res){
+		var softskill = await Softskill.find({
+			where: {idCategorie:req.param('idCategorie')},
+			select:['id','nom','nomBadge','cheminBadge','idCategorie'],
+		});
+		return res.send(softskill);
+	},
+	
+	selectAllSoftskill: async function(req, res){
+		var softskill = await Softskill.find({
+			select:['id','nom','nomBadge','cheminBadge','idCategorie'],
+		});
+		return res.send(softskill);
+	},
 	
 	createSoftSkill: async function(req, res){
 		

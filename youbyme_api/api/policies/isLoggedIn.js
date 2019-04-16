@@ -31,6 +31,7 @@ module.exports = function(req, res, next) {
     }
 
     // on vérifie si le token est bon
+    console.log("on passe dans la policie isLoggedIn");
     jwt.verify(bearerToken, "secretKey", function(err, decoded) {
       if (err) {
         sails.log("verification error", err);
