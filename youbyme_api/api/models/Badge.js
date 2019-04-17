@@ -26,7 +26,8 @@ module.exports = {
     },
 	dateValidation: {
       type:'string',
-      columnName:'date_validation'
+      columnName:'date_validation',
+      columnType: 'date'
     },
 	id: {
       type:'number',

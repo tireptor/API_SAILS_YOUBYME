@@ -22,8 +22,8 @@ module.exports = {
     nom_badge: {
       type:'string',
       columnName:'nom_badge',
-    unique: true,
-    required: true,
+      unique: true,
+      required: true,
     },
     chemin_badge: {
       type:'string',
@@ -32,7 +32,6 @@ module.exports = {
     },
     badges:{
       collection:'badge',
-      //type:'number',
       via:'id_t_badge',
     },
   },
