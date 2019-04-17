@@ -19,6 +19,11 @@ module.exports.policies = {
 
   // '*': true,
   // Policies appliqué pour les fonctions de UserController
+  BadgeController:{
+    create : 'isLoggedIn',
+    destroy : 'isAdmin',
+    update : 'isAdmin'
+  },
   CategorieController:{
     update : 'isLoggedIn',
     destroy : 'isAdmin',
@@ -47,11 +52,6 @@ module.exports.policies = {
     update : 'isLoggedIn',
     destroy : 'isLoggedIn',
   },
-  TracaVoteController:{
-    create : 'isLoggedIn',
-    update : 'isLoggedIn',
-    destroy : 'isLoggedIn',
-  },
   UserController:{
     create : 'isAdmin',
     update : 'isLoggedIn',
@@ -62,9 +62,5 @@ module.exports.policies = {
     update : 'isLoggedIn',
     destroy : 'isLoggedIn',
   },
-  ValidationController:{
-    create : 'isLoggedIn',
-    update : 'isLoggedIn',
-    destroy : 'isAdmin',
-  }
+
 };
