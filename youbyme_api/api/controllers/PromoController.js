@@ -39,14 +39,14 @@ module.exports = {
 
     getAllStudentInPromo: async function(req, res){
         var codeAnalytique = req.param('codeAnalytique');
-            
-            
+        var idUserConnected = req.param('idUser')
+        sails.log("avant d'exécuter la requête !" + idUserConnected); 
         var requestPilot = await sails.sendNativeQuery(
                                     'SELECT nom_t_personne, prenom_t_personne, email_t_personne, t_personne.id_t_personne, photo ' +
                                     'FROM t_personne ' +
                                     'INNER JOIN t_assoc_promo_personne ON t_personne.id_t_personne = t_assoc_promo_personne.id_t_personne ' +
                                     'INNER JOIN t_groupe ON t_groupe.id_t_groupe = t_personne.id_t_groupe ' +
-                                    'WHERE nom_t_groupe = \'eleves\' AND code_analytique = \'' + codeAnalytique + '\'');
+                                    'WHERE nom_t_groupe = \'eleves\' AND code_analytique = \'' + codeAnalytique + '\' AND t_personne.id_t_personne != '+idUserConnected);
                                 
         sails.log(requestPilot);     // retourne un log dans la console
     
