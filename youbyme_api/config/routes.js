@@ -49,5 +49,5 @@ module.exports.routes = {
    
   'get /groupe/all': 'GroupeController.getAllGroupes',                         													// Récupère tous les groupes existants en base de données
   
-  'post /import': 'ImportController.ImportCSV',																						//Créer des utilisateur et effectue l'association pour les promotions grâce à un fichier CSV
+  'post /import': 'ImportController.uploadFile',																						//Créer des utilisateur et effectue l'association pour les promotions grâce à un fichier CSV
 };
