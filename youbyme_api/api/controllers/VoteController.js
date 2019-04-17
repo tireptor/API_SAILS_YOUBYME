@@ -94,9 +94,9 @@ module.exports = {
 		
 			if ( promoNbVote.rows[0].nombre_vote == voted.rows[0].count)	
 			{
-				return res.ok(voted.rows);
+				return res.ok("ok");
 			}
-			return res.send("nok");
+			return res.ok("nok");
 	  },
 
 	allVoteObtained: async function(req, res){
